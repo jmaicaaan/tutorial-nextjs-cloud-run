@@ -31,12 +31,9 @@ jobs:
         gcloud services enable run.googleapis.com
         gcloud --quiet auth configure-docker
 
-    - name: Build image
+    - name: Build and tag image
       run: |-
         docker build . -t $REPO_NAME:$GITHUB_SHA
-
-    - name: Tag image using GCR
-      run: |-
         docker tag $REPO_NAME gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
 
     - name: Push image to GCR
