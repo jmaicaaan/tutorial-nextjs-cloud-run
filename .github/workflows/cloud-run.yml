@@ -33,8 +33,7 @@ jobs:
 
     - name: Build and tag image
       run: |-
-        docker build \
-          --tag "gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA"
+        docker build --tag "gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA"
 
     - name: Push image to GCR
       run: |-
