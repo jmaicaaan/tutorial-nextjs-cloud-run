@@ -9,7 +9,6 @@ on:
 env:
   CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   CLOUD_RUN_REGION: asia-northeast1
-  IMAGE_TAG: ${{ GITHUB_SHA }}
   REPO_NAME: nextjs-website # project-name
 
 jobs:
@@ -34,19 +33,19 @@ jobs:
 
     - name: Build image
       run: |-
-        docker build . -t $REPO_NAME:$IMAGE_TAG
+        docker build . -t $REPO_NAME:$GITHUB_SHA
 
     - name: Tag image using GCR
       run: |-
-        docker tag $REPO_NAME gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$IMAGE_TAG
+        docker tag $REPO_NAME gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
 
     - name: Push image to GCR
       run: |-
-        docker push gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$IMAGE_TAG
+        docker push gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
 
     - name: Deploy
       run: |-
-        gcloud beta run deploy $REPO_NAME --image gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$IMAGE_TAG \
+        gcloud beta run deploy $REPO_NAME --image gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA \
           --project $CLOUD_RUN_PROJECT_ID \
           --platform managed \
           --region $CLOUD_RUN_REGION \
