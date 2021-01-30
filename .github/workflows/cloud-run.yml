@@ -9,7 +9,7 @@ on:
 env:
   CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   CLOUD_RUN_REGION: asia-northeast1
-  IMAGE_TAG: $GITHUB_SHA
+  IMAGE_TAG: ${{ GITHUB_SHA }}
   REPO_NAME: nextjs-website # project-name
 
 jobs:
