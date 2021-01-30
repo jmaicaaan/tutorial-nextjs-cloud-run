@@ -45,4 +45,5 @@ jobs:
           --project $CLOUD_RUN_PROJECT_ID \
           --platform managed \
           --region $CLOUD_RUN_REGION \
-          --allow-unauthenticated
+          --allow-unauthenticated \
+          --quiet
