@@ -3,7 +3,8 @@ name: nextjs-cloud-run
 on:
   push:
     branches:
-      -master
+      - master
+      - main
 
 env:
   CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
