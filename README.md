@@ -1,3 +1,9 @@
+Article link:
+
+https://jmaicaaan.medium.com/this-is-how-i-deploy-next-js-into-google-cloud-run-with-github-actions-1d7d2de9d203
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
